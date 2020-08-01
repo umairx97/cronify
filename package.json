@@ -1,0 +1,17 @@
+{
+  "name": "cronify",
+  "version": "1.1.0",
+  "description": "Making Cron Simple",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cron"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "node-cron": "^2.0.3"
+  }
+}
