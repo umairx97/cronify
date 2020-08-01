@@ -70,7 +70,7 @@ cron.everyMinute(console.log, 'hello')
 cron.everyMinute({ timezone: "America/Sao_Paulo" }, console.log, 'hello')
 ```
 ---
-**everyNthMinute**```(fn, fnArgs)```
+**everyNthMinute**```(minutes, opts<optional>, fn, fnArgs)```
 ```javascript
 const cron = require('cronify')
 
@@ -92,7 +92,7 @@ cron.everyHour(console.log, 'hello')
 cron.everyHour({ timezone: "America/Sao_Paulo" }, console.log, 'hello')
 ```
 ---
-**everyNthHour**```(fn, fnArgs)```
+**everyNthHour**```(hours, opts<optional>, fn, fnArgs)```
 ```javascript
 const cron = require('cronify')
 
