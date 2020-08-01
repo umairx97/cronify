@@ -19,38 +19,86 @@ yarn add cronify
 
 ## 💡 API <a name="api"></a>
 
-**cronify**```(cronParams, fn, fnArgs)```
+**cronify**```(params, opts<optional>, fn, fnArgs)```
 ```javascript
 const cron = require('cronify')
 
 // simple node-cron as you like it
-cron.cronify('*/1 * * * * *', console.log, 'hello') // This will log hello world every second
+cron.cronify('*/1 * * * * *', console.log, 'hello') // without options
+
+// with options 
+cron.cronify(
+  '*/1 * * * * *', 
+  { timezone: "America/Sao_Paulo" },
+  console.log, 
+  'hello'
+) 
+
 ```
 ---
-**everySecond**```(fn, fnArgs)```
+**everySecond**```(opts<optional>, fn, fnArgs)```
 ```javascript
 const cron = require('cronify')
 
-cron.everySecond(console.log, 'hello') // This will log hello world every second
+// without options
+cron.everySecond(console.log, 'hello') 
+
+// with options
+cron.everySecond({ timezone: "America/Sao_Paulo" }, console.log, 'hello')
+
 ```
 ---
-**everyNthSecond**```(seconds, fn, fnArgs)```
+**everyNthSecond**```(seconds, opts<optional> fn, fnArgs)```
 ```javascript
 const cron = require('cronify')
 
-cron.everyNthSecond(2, console.log, 'hello') // This will log hello world every 2 seconds
+// without options - this will log hello world every 2 seconds
+cron.everyNthSecond(2, console.log, 'hello', 'world')
+
+// with options - this will log hello world every 2 seconds
+cron.everyNthSecond(2, { timezone: "America/Sao_Paulo" } console.log, 'hello', 'world')
 ```
 ---
-**everyMinute**```(fn, fnArgs)```
+**everyMinute**```(opts<optional>, fn, fnArgs)```
 ```javascript
 const cron = require('cronify')
 
-cron.everyMinute(console.log, 'hello') // This will log hello world every minute
+// without options
+cron.everyMinute(console.log, 'hello') 
+
+// with options
+cron.everyMinute({ timezone: "America/Sao_Paulo" }, console.log, 'hello')
 ```
 ---
 **everyNthMinute**```(fn, fnArgs)```
 ```javascript
 const cron = require('cronify')
 
-cron.everyNthMinute(2, console.log, 'hello') // This will log hello world every 2 minutes
+// without options - this will log hello world every 2 minutes
+cron.everyNthMinute(2, console.log, 'hello', 'world')
+
+// with options - this will log hello world every 2 minutes
+cron.everyNthMinute(2, { timezone: "America/Sao_Paulo" } console.log, 'hello', 'world')
+```
+---
+**everyHour**```(opts<optional>, fn, fnArgs)```
+```javascript
+const cron = require('cronify')
+
+// without options
+cron.everyHour(console.log, 'hello') 
+
+// with options
+cron.everyHour({ timezone: "America/Sao_Paulo" }, console.log, 'hello')
+```
+---
+**everyNthHour**```(fn, fnArgs)```
+```javascript
+const cron = require('cronify')
+
+// without options - this will log hello world every 2 hours
+cron.everyNthHour(2, console.log, 'hello', 'world')
+
+// with options - this will log hello world every 2 hours
+cron.everyNthHour(2, { timezone: "America/Sao_Paulo" } console.log, 'hello', 'world')
 ```

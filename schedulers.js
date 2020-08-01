@@ -5,25 +5,79 @@ module.exports = {
   everySecond,
   everyNthSecond,
   everyMinute,
-  everyNthMinute
+  everyNthMinute,
+  everyHour,
+  everyNthHour
 }
 
-function cronify (params = '* * * * * *', fn, ...fnArgs) {
-  return cron.schedule(params, () => fn(...fnArgs))
+const isFunction = (arg) => typeof arg === 'function'
+
+function cronify (params = '* * * * * *', opts = {}, fn, ...fnArgs) {
+  let args = []
+  if (isFunction(opts)) {
+    fn = opts
+    args = Array.from(arguments).slice(2)
+    opts = {}
+  }
+  return cron.schedule(params, () => args.length ? fn(...args) : fn(...fnArgs), opts)
 }
 
-function everySecond (fn, ...fnArgs) {
-  return cron.schedule('*/1 * * * * *', () => fn(...fnArgs))
+function everySecond (opts, fn, ...fnArgs) {
+  let args = []
+  if (isFunction(opts)) {
+    fn = opts
+    args = Array.from(arguments).slice(1)
+    opts = {}
+  }
+  return cron.schedule('*/1 * * * * *', () => args.length ? fn(...args) : fn(...fnArgs), opts)
 }
 
-function everyNthSecond (second, fn, ...fnArgs) {
-  return cron.schedule(`*/${second} * * * * *`, () => fn(...fnArgs))
+function everyNthSecond (seconds, opts = {}, fn, ...fnArgs) {
+  let args = []
+  if (isFunction(opts)) {
+    fn = opts
+    args = Array.from(arguments).slice(2)
+    opts = {}
+  }
+  return cron.schedule(`*/${seconds} * * * * *`, () => args.length ? fn(...args) : fn(...fnArgs), opts)
 }
 
-function everyMinute (fn, ...fnArgs) {
-  return cron.schedule('*/1 * * * *', () => fn(...fnArgs))
+function everyMinute (opts = {}, fn, ...fnArgs) {
+  let args = []
+  if (isFunction(opts)) {
+    fn = opts
+    args = Array.from(arguments).slice(1)
+    opts = {}
+  }
+  return cron.schedule('*/1 * * * *', () => () => args.length ? fn(...args) : fn(...fnArgs), opts)
 }
 
-function everyNthMinute (minute, fn, ...fnArgs) {
-  return cron.schedule(`*/${minute} * * * *`, () => fn(...fnArgs))
+function everyNthMinute (minutes, opts = {}, fn, ...fnArgs) {
+  let args = []
+  if (isFunction(opts)) {
+    fn = opts
+    args = Array.from(arguments).slice(2)
+    opts = {}
+  }
+  return cron.schedule(`*/${minutes} * * * *`, () => () => args.length ? fn(...args) : fn(...fnArgs), opts)
+}
+
+function everyHour (opts = {}, fn, ...fnArgs) {
+  let args = []
+  if (isFunction(opts)) {
+    fn = opts
+    args = Array.from(arguments).slice()
+    opts = {}
+  }
+  return cron.schedule('0 0 */1 * * *', () => () => args.length ? fn(...args) : fn(...fnArgs), opts)
+}
+
+function everyNthHour (hours, opts = {}, fn, ...fnArgs) {
+  let args = []
+  if (isFunction(opts)) {
+    fn = opts
+    args = Array.from(arguments).slice(2)
+    opts = {}
+  }
+  return cron.schedule(`0 0 */${hours} * * *`, () => () => args.length ? fn(...args) : fn(...fnArgs), opts)
 }

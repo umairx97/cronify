@@ -5,7 +5,9 @@ const cron = {
   everySecond: schedulers.everySecond,
   everyNthSecond: schedulers.everyNthSecond,
   everyMinute: schedulers.everyMinute,
-  everyNthMinute: schedulers.everyNthMinute
+  everyNthMinute: schedulers.everyNthMinute,
+  everyHour: schedulers.everyHour,
+  everyNthHour: schedulers.everyNthHour
 }
 
 module.exports = cron
