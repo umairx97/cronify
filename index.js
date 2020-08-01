@@ -8,6 +8,4 @@ const cron = {
   everyNthMinute: schedulers.everyNthMinute
 }
 
-module.exports = {
-  cron
-}
+module.exports = cron

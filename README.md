@@ -5,6 +5,7 @@
 <h4 align="center" style="margin: 0px; padding: 0px">Making Cron Simple - uses node-cron under the hood</h4>
 </div>
 
+![Cronify](./cronify.png)
 
 ### npm
 ```
