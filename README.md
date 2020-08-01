@@ -1,11 +1,11 @@
-<div>
-<h1 align="center" style="font-size: 50px; border:none; margin: 0px; padding: 0px">Cronify
-</h1>
+<h1 align="center" style="font-size: 80px; border:none; margin: 0px; padding: 0px">Cronify
 <!-- <br/> -->
 <h4 align="center" style="margin: 0px; padding: 0px">Making Cron Simple - uses node-cron under the hood</h4>
 </div>
 
-![Cronify](./cronify.png)
+<div style="display:flex; align-items:center; justify-content: center">
+<img src="./cronify.png" style="height: 400px; width:80%; object-fit: contain">
+</div>
 
 ### npm
 ```
