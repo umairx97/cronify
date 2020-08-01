@@ -1,4 +1,6 @@
-<h1 align="center" style="font-size: 80px; border:none; margin: 0px; padding: 0px">Cronify
+<div> 
+  <h1 align="center" style="font-size: 80px; border:none; margin: 0px; padding: 0px">Cronify</h1>
+</div>
 <!-- <br/> -->
 <h4 align="center" style="margin: 0px; padding: 0px">Making Cron Simple - uses node-cron under the hood</h4>
 </div>
@@ -33,7 +35,6 @@ cron.cronify(
   console.log, 
   'hello'
 ) 
-
 ```
 ---
 **everySecond**```(opts<optional>, fn, fnArgs)```
@@ -45,7 +46,6 @@ cron.everySecond(console.log, 'hello')
 
 // with options
 cron.everySecond({ timezone: "America/Sao_Paulo" }, console.log, 'hello')
-
 ```
 ---
 **everyNthSecond**```(seconds, opts<optional> fn, fnArgs)```
