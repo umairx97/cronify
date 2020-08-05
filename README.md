@@ -20,7 +20,7 @@ yarn add cronify
 ```
 
 ## 🚀 Examples <a name="Examples"></a>
-Checkout the [examples]('./examples) to see the Cronify API in action.
+Checkout the [examples](examples) to see the Cronify API in action.
 
 ## 💡 API <a name="api"></a>
 
