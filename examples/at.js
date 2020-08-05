@@ -20,7 +20,7 @@ jobStartDate.setHours(6, 52, 0, 0, 0)
 // Any future timestamp that will be used as ending time for your job
 const afterDate = new Date().setTime(jobStartDate.getTime() + 5000)
 
-function sayMyName (name) {
+function sayMyName (name = 'node-cron wrapper') {
   if (Date.now() >= afterDate) return job.stop()
   console.log(`Hi ${name}`)
 }
