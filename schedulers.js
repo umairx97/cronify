@@ -1,4 +1,5 @@
 const cron = require('node-cron')
+const cronServices = require('./cron-services')
 
 module.exports = {
   cronify,
@@ -7,7 +8,8 @@ module.exports = {
   everyMinute,
   everyNthMinute,
   everyHour,
-  everyNthHour
+  everyNthHour,
+  at
 }
 
 const isFunction = (arg) => typeof arg === 'function'
@@ -80,4 +82,19 @@ function everyNthHour (hours, opts = {}, fn, ...fnArgs) {
     opts = {}
   }
   return cron.schedule(`0 0 */${hours} * * *`, () => () => args.length ? fn(...args) : fn(...fnArgs), opts)
+}
+
+function at (schedule, opts = {}, fn, ...fnArgs) {
+  let args = []
+  const [period, , time] = schedule.split(' ')
+  const [hours, minutes] = time.split(':')
+  const cronFormat = cronServices.getCronFromPeriod(period, hours, minutes)
+
+  if (isFunction(opts)) {
+    fn = opts
+    args = Array.from(arguments).slice(2)
+    opts = {}
+  }
+
+  return cron.schedule(cronFormat, () => args.length ? fn(...args) : fn(...fnArgs), opts)
 }
