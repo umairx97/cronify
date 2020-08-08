@@ -1,4 +1,4 @@
-const { everySecond } = require('../index')
+const { everyNthSecond } = require('../index')
 
 function sayMyName (name = 'node-cron wrapper') {
   console.log(`Hi ${name}`)
@@ -6,4 +6,4 @@ function sayMyName (name = 'node-cron wrapper') {
 
 // This will keep running indefinitely until stopped otherwise
 // See examples/at.js on how to stop cron jobs based on time
-everySecond(sayMyName, 'Cronify')
+everyNthSecond(4, sayMyName, 'Cronify')
