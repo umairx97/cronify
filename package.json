@@ -1,6 +1,6 @@
 {
   "name": "cronify",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "Making Cron Simple - uses node-cron under the hood",
   "main": "index.js",
   "scripts": {
